@@ -42,8 +42,13 @@ public class Utility {
             throw new RuntimeException(e);
         }
 
+        double score = 0.0;
+        for(String word : words) {
+            if(lexicon.containsKey(word)) {
+                score += lexicon.get(word);
+            }
+        }
 
-
-        return 0.0;
+        return score;
     }
 }
