@@ -10,8 +10,8 @@ import java.util.Set;
 
 public class Utility {
     public static double analyzeText(String text) {
-        String pathStop = "rec/SmartStoplist.txt";
-        String pathLex = "rec/vader_lexicon.txt";
+        String pathStop = "src/E_6b_3/rec/SmartStoplist.txt";
+        String pathLex = "src/E_6b_3/rec/vader_lexicon.txt";
         Set<String> words = new HashSet<>();
         Map<String, Double> lexicon = new HashMap<>();
 
@@ -43,7 +43,11 @@ public class Utility {
         }
 
         double score = 0.0;
-        for(String word : words) {
+        String[] wordsText = text.split("\\s+");
+        for(String word : wordsText) {
+            if(words.contains(word)) {
+                continue;
+            }
             if(lexicon.containsKey(word)) {
                 score += lexicon.get(word);
             }
