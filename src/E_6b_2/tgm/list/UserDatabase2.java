@@ -1,7 +1,10 @@
 package E_6b_2.tgm.list;
 
 import java.util.*;
-import tgm.list.exception.*;
+
+import E_6b_2.tgm.list.exception.NotAuthorizedException;
+import E_6b_2.tgm.list.exception.UserNotExistsException;
+import E_6b_2.tgm.list.*;
 
 /**
  * <p>Diese Klasse implementiert eine Benutzerdatenbasis.</p>
