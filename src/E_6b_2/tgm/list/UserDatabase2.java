@@ -2,9 +2,8 @@ package E_6b_2.tgm.list;
 
 import java.util.*;
 
-import E_6b_2.tgm.list.exception.NotAuthorizedException;
-import E_6b_2.tgm.list.exception.UserNotExistsException;
-import E_6b_2.tgm.list.*;
+import E_6b_2.tgm.list.exception.*;
+
 
 /**
  * <p>Diese Klasse implementiert eine Benutzerdatenbasis.</p>
@@ -24,10 +23,10 @@ public class UserDatabase2 implements Iterable<User> {
 	
 	/**
 	 * <p>Erstellt eine neue Benutzerdatenbasis und fügt einen initialen Admin hinzu.</p>
-	 * @param defaultadmin Gibt den ersten Benutzer der Benutzerdb an. Dies muss ein Benutzer mit der Rolle {@link tgm.list.Role#ADMIN} sein, 
+	 * @param defaultadmin Gibt den ersten Benutzer der Benutzerdb an. Dies muss ein Benutzer mit der Rolle {@link E_6b_2.tgm.list.Role#ADMIN} sein,
 	 *        da sonst keine weiteren Benutzer hinzugefügt werden könnten.
-	 * @param Speicher, der die Benutzer aufnehmen soll
-	 * @throws IllegalArgumentException wird geworfen, wenn der übergebene Benutzer null oder keine {@link tgm.list.Role#ADMIN} ist
+	 * @param store, der die Benutzer aufnehmen soll
+	 * @throws IllegalArgumentException wird geworfen, wenn der übergebene Benutzer null oder keine {@link E_6b_2.tgm.list.Role#ADMIN} ist
 	 */
 	public UserDatabase2(User defaultadmin, UserStorage<User> store) 
 	  throws IllegalArgumentException {
@@ -61,15 +60,15 @@ public class UserDatabase2 implements Iterable<User> {
 	
 	/**
 	 * <p>Fügt einen neuen Benutzer der DB hinzu.</p>
-	 * <p>Zusätzlich kann dem Benutzer ein Manager hinzugefügt werden. Dieser muss mindestens die Rolle {@link tgm.list.Role#ADMIN} oder {@link tgm.list.Role#MANAGER} haben. Was der Manager alles mit dem Benutzer
-	 * machen darf siehe {@link tgm.list.User}.</p> 
-	 * <p>Zum Hinzufügen eines Benutzers muss man mindestens die Rolle {@link tgm.list.Role#MANAGER} haben.</p>
+	 * <p>Zusätzlich kann dem Benutzer ein Manager hinzugefügt werden. Dieser muss mindestens die Rolle {@link E_6b_2.tgm.list.Role#ADMIN} oder {@link E_6b_2.tgm.list.Role#MANAGER} haben. Was der Manager alles mit dem Benutzer
+	 * machen darf siehe {@link E_6b_2.tgm.list.User}.</p>
+	 * <p>Zum Hinzufügen eines Benutzers muss man mindestens die Rolle {@link E_6b_2.tgm.list.Role#MANAGER} haben.</p>
 	 * @param username Benutzername des neuen Benutzers
 	 * @param password Passwort des neuen Benutzers - wird nicht im Klartext gespeichert
 	 * @param role Rolle des neuen Benutzers
 	 * @param authorativeUser Manager-Benutzer, der dem neuen Benutzer zugeordnet wird
 	 * @throws UserExistsException wird geworfen, wenn der Benutzername in der DB schon existiert
-	 * @throws NotLoggedInException Benutzer können nur angelegt werden, wenn man an der DB angemeldet ist siehe {@link tgm.list.UserDatabase2#login(String, String)}
+	 * @throws NotLoggedInException Benutzer können nur angelegt werden, wenn man an der DB angemeldet ist siehe {@link E_6b_2.tgm.list.UserDatabase2#login(String, String)}
 	 * @throws NotEnoughPrivilegesException wird geworfen, wenn der angemeldete Benutzer nicht die Rechte zum Benutzer anlegen hat
 	 *         oder wenn der übergebene Manager-Benutzer zu wenige Rechte hat.
 	 */
@@ -82,12 +81,12 @@ public class UserDatabase2 implements Iterable<User> {
 	/**
 	 * <p>Fügt einen neuen Benutzer der DB hinzu.</p>
 	 * <p>Als Manager-Benutzer wird der gerade eingeloggte Benutzer hinzugefügt.</p>
-	 * <p>Zum Hinzufügen eines Benutzers muss man mindestens die Rolle {@link tgm.list.Role#MANAGER} haben.</p>
+	 * <p>Zum Hinzufügen eines Benutzers muss man mindestens die Rolle {@link E_6b_2.tgm.list.Role#MANAGER} haben.</p>
 	 * @param username Benutzername des neuen Benutzers
 	 * @param password Passwort des neuen Benutzers - wird nicht im Klartext gespeichert
 	 * @param role Rolle des neuen Benutzers
 	 * @throws UserExistsException wird geworfen, wenn der Benutzername in der DB schon existiert
-	 * @throws NotLoggedInException Benutzer können nur angelegt werden, wenn man an der DB angemeldet ist siehe {@link tgm.list.UserDatabase2#login(String, String)}
+	 * @throws NotLoggedInException Benutzer können nur angelegt werden, wenn man an der DB angemeldet ist siehe {@link E_6b_2.tgm.list.UserDatabase2#login(String, String)}
 	 * @throws NotEnoughPrivilegesException wird geworfen, wenn der angemeldete Benutzer nicht die Rechte zum Benutzer anlegen hat
 	 */
 	public void addUser(String username, String password, Role role) 
@@ -98,11 +97,11 @@ public class UserDatabase2 implements Iterable<User> {
 	/**
 	 * <p>Fügt einen neuen Benutzer der DB hinzu.</p>
 	 * <p>Als Manager-Benutzer wird der gerade eingeloggte Benutzer hinzugefügt.</p>
-	 * <p>Zum Hinzufügen eines Benutzers muss man mindestens die Rolle {@link tgm.list.Role#MANAGER} haben.</p>
+	 * <p>Zum Hinzufügen eines Benutzers muss man mindestens die Rolle {@link E_6b_2.tgm.list.Role#MANAGER} haben.</p>
 	 * @param user Ein User-Objekt, dass den hinzuzufügenden Benutzer enthält
 	 * @throws UserExistsException wird geworfen, wenn der Benutzername in der DB schon existiert
 	 * @throws UserNotExistsException wenn der Manager-Benutzer nicht in der DB existiert
-	 * @throws NotLoggedInException Benutzer können nur angelegt werden, wenn man an der DB angemeldet ist siehe {@link tgm.list.UserDatabase2#login(String, String)}
+	 * @throws NotLoggedInException Benutzer können nur angelegt werden, wenn man an der DB angemeldet ist siehe {@link E_6b_2.tgm.list.UserDatabase2#login(String, String)}
 	 * @throws NotEnoughPrivilegesException wird geworfen, wenn der angemeldete Benutzer nicht die Rechte zum Benutzer anlegen hat
 	 */
 	public void addUser(User user) 
@@ -125,11 +124,11 @@ public class UserDatabase2 implements Iterable<User> {
 	}
 	
 	/**
-	 * <p>Löscht einen Benutzer aus der DB. Dazu muss man als {@link tgm.list.Role#ADMIN} eingeloggt sein.</p>
+	 * <p>Löscht einen Benutzer aus der DB. Dazu muss man als {@link E_6b_2.tgm.list.Role#ADMIN} eingeloggt sein.</p>
 	 * @param username Benutzername des Benutzers, der gelöscht werden soll
 	 * @throws UserNotExistsException wird geworfen, wenn es den angegeben Benutzer nicht in der DB gibt
 	 * @throws NotLoggedInException wenn kein Benutzer eingeloggt ist
-	 * @throws NotEnoughPrivilegesException wenn der eingeloggte Benutzer kein {@link tgm.list.Role#ADMIN} ist und daher das 
+	 * @throws NotEnoughPrivilegesException wenn der eingeloggte Benutzer kein {@link E_6b_2.tgm.list.Role#ADMIN} ist und daher das
 	 *    Recht zu löschen nicht hat
 	 * @throws IllegalArgumentException wenn der eingeloggte Benutzer sich selbst löschen will
 	 */
@@ -146,7 +145,7 @@ public class UserDatabase2 implements Iterable<User> {
 
 	/**
 	 * <p>Liefert einen Iterator zurück, mit dem durch alle Benutzer in der DB durchgegangen werden kann.</p>
-	 * <p>Dafür muss man als {@link tgm.list.Role#ADMIN} oder {@link tgm.list.Role#MANAGER} eingeloggt sein.</p>
+	 * <p>Dafür muss man als {@link E_6b_2.tgm.list.Role#ADMIN} oder {@link E_6b_2.tgm.list.Role#MANAGER} eingeloggt sein.</p>
 	 * siehe auch {@link java.lang.Iterable#iterator()}
 	 * @return den Iterator
 	 * @throws NotLoggedInException wenn kein Benutzer eingeloggt ist
