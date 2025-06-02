@@ -1,4 +1,4 @@
-package E_6b_3;
+package E_6a_3;
 
 import java.util.ArrayList;
 
