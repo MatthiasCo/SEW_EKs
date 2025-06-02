@@ -9,7 +9,6 @@ public class main {
     private static String prefix = "";
 
     public static void printOrdner(File file) {
-        //recursive
         if(!file.isDirectory()) {
             System.out.println(getFullFile(file));
             return;
